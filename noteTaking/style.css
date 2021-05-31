@@ -1,0 +1,62 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Arimo', sans-serif;
+}
+header {
+    background-image: linear-gradient(75deg, #aadedf, #1983da);
+    margin: 0 auto;
+    height: 20vh;
+    font-size: 1.7rem;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.note-container {
+    display: flex;
+    margin: 0 200px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+}
+.note-form {
+    margin: 2rem auto;
+    text-align: center;
+}
+.note-item {
+    min-width: 300px;
+    position: relative;
+    border-radius: 2%;
+    padding: 20px;
+    box-shadow: 5px 5px  20px rgba(0, 0, 0, 0.2) ;
+    min-height: 200px;
+    background-color: #aadedf;
+    color: #000;
+    transition: all 0.3s ease;
+}
+.note-item:hover {
+    background-color: #1983da;
+    color: #fff;
+}
+.note-item-btn{
+    border: none;
+}
+.note-item-btn{
+    position: absolute;
+    right: 4%;;
+    bottom: 4%;
+    background-color:#1983da;
+    color: #fff;
+    padding: 0.2rem;
+    cursor: pointer;
+    border: 2px solid #1983da;
+    border-radius: 10%;
+}
+.note-item-btn:hover {
+    border: 2px solid #fff;
+    border-radius: 10%;
+}
