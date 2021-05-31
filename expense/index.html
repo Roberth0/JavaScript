@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Expense App</title>
+  </head>
+
+  <body>
+    <header>
+      <h1 class="title">Expense App</h1>
+    </header>
+    <form class="expense-fields">
+      <label for="expense-desc">Description</label>
+      <input type="text" name="" id="expense-desc" />
+      <label for="expense-date">Date</label>
+      <input type="date" name="" id="expense-date" />
+      <label for="expense-cost">Cost</label>
+      <input type="number" name="" id="expense-cost" /><br />
+      <button type="submit" id="expense-button">
+        Add expense <i class="fas fa-cart-plus"></i>
+      </button>
+    </form>
+
+    <div class="expense-container">
+      <table id="expense-table">
+          <tr class="table-header">
+              <th>Description</th>
+              <th>Date</th>
+              <th colspan="2">Cost</th>
+          </tr>
+      </table>
+    </div>
+
+    <script src="./main.js"></script>
+  </body>
+</html>

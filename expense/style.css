@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: linear-gradient(120deg, #290149, #189050);
+    height: 100vh;
+    color: #fff;
+    font-family: 'Rubik', sans-serif;
+}
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header, form {
+    height: 30vh;
+    margin: 1rem;
+    padding: 0.2rem;
+    text-align: center;
+}
+.expense-fields input {
+    margin: 2rem;
+    padding: 0.2rem;
+    outline: none;
+    border: none;
+}
+
+#expense-button {
+    border: none;
+    outline: none;
+    min-width: 50%;
+    color: #290149;
+    background-color: #fff;
+    padding: 0.5rem;
+    cursor: pointer;
+    font-family: 'Rubik', sans-serif;
+    transition: all 0.5s ease;
+}
+
+#expense-button:hover {
+    background-color: #7bd8a6 ;
+}
+
+.expense-container {
+    /* background-color: rgb(88, 128, 103); */
+    margin: 0.1rem auto;
+    width: 60%;
+}
+table, th, td {
+    border: none;
+    margin: 0;
+    text-align: center;
+}
+
+table{
+    width: 100%;
+}
+
+.table-header th{
+    padding: 0;
+    margin: 0;
+    border: none;
+
+}
+/* tr td:nth-child(2), th:nth-child(2){ */
+/*     /1* background-color: rgb(65, 65, 146); *1/ */
+/* } */
+
+.deleteBtn {
+    padding: 0.1rem;
+    background-color: #8455a0;
+    color: #FAB21E;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    box-shadow: none;
+}
+
+table tr:first-child {
+    background-color: #1C2875;
+    margin: 0;
+}
+
+table tr:not(:first-child){
+    background-color: #8455a0;
+}

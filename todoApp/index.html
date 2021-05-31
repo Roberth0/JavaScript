@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css" media="all">
+    <script src="https://kit.fontawesome.com/13110e03ac.js" crossorigin="anonymous"></script>
+    <title>To do App</title>
+</head>
+<body>
+    <div class="container-header">
+        <h1 >To do APP</h1>
+        <form action="">
+            <input
+                id="todo"
+                type="text" 
+                placeholder="New todo"
+                required = "true"
+                autocomplete="off"
+                name="">
+
+            <button type="button" class="addBtn"> <i class="fas fa-plus-circle"></i> Add to do</button>
+        </form>
+    </div>
+    <div class="container-todos">
+        <ul id="todoList">
+            <li>
+                <span>Item 1</span>
+                <button class="delBtn"><i class="fas fa-trash-alt"></i></button>
+                <button class="editBtn"><i class="fas fa-edit"></i></button>
+                <input id="" type="checkbox" name="">
+            </li>
+        </ul>
+    </div>
+    <div id="modal" class="modal-edit ">
+        <div class="container-edit">
+            <p>To do</p> 
+            <input type="text" name="" id="edit-text"><br>
+
+            <label for="completed">Completed</label>
+            <input id="completed" type="checkbox" name="">
+            <button id="modalBtn">Aceptar</button>
+        </div>
+    </div>
+    <script src="./main.js"></script>
+    
+</body>
+</html>
