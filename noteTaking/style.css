@@ -5,9 +5,12 @@
 }
 body {
     font-family: 'Arimo', sans-serif;
+    background-image: linear-gradient(75deg, #aadedf, #1983da);
+    height: 100vh;
+    width: 100vw;
 }
 header {
-    background-image: linear-gradient(75deg, #aadedf, #1983da);
+    /* background-image: linear-gradient(75deg, #aadedf, #1983da); */
     margin: 0 auto;
     height: 20vh;
     font-size: 1.7rem;
@@ -15,6 +18,14 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+#note-input{
+    width: 60%;
+    padding: 0.52rem;
+    resize: none;
+    outline: none;
+    border: none;
+    font-family: 'Arimo', sans-serif;
 }
 .note-container {
     display: flex;
@@ -24,13 +35,18 @@ header {
 
 }
 .note-form {
+    width: 70%;
     margin: 2rem auto;
-    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
 .note-item {
     min-width: 300px;
     position: relative;
     border-radius: 2%;
+    margin: 10px;
+    cursor: default;
     padding: 20px;
     box-shadow: 5px 5px  20px rgba(0, 0, 0, 0.2) ;
     min-height: 200px;
@@ -59,4 +75,38 @@ header {
 .note-item-btn:hover {
     border: 2px solid #fff;
     border-radius: 10%;
+}
+.modal {
+    width: 100vw;
+    position: absolute;
+    display: flex;
+    top: 0;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    justify-content: center;
+    align-items: center;
+}
+.noteInfo {
+    background-color: #1983da;
+    width: 700px;
+    position: relative;
+    height: 300px;
+    padding: 0.8rem;
+    border-radius: 2%;
+    cursor: default;
+}
+div > button {
+    position: absolute;
+    padding: 15px;
+    font-family: "Arimo", sans-serif;
+    font-size: 20px;
+    right: 2%;
+    cursor: pointer;
+    bottom: 2%;
+}
+.d-none {
+    display: none;
+}
+.noteText{
+    cursor: default;
 }

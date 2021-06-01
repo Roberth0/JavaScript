@@ -14,15 +14,20 @@
     </header>
     <form class="note-form">
         <label for="note-input">New note</label>
-        <input id="note-input" type="text" placeholder="Enter the new note">
-        <button id="addNote"><i class="fas fa-book"></i></button>
+        <textarea id="note-input" required></textarea>
+        <!-- <input id="note-input" type="text" placeholder="Enter the new note"> -->
+        <button type="submit" id="addNote"><i class="fas fa-book"></i></button>
     </form>
-    <div class="note-container">
-        <div class="note-item">Firts note added 
+    <div class="note-container" contenteditable="false">
+        <div class="note-item" contenteditable="false">Firts note added 
             <button class="note-item-btn">Review</button>
         </div>
-        <div class="note-item">Another test </div>
-        <div class="note-item">The final one</div>
+    </div>
+    <div class="modal d-none">
+        <div class="noteInfo" contenteditable="false">
+            <p class="noteText" contenteditable="false">some random test text</p>
+            <button id="modal-btn">Aceptar</button>
+        </div>
     </div>
    <script src="main.js"></script>
 </body>
