@@ -1,17 +1,50 @@
 "use strict";
+const scoreDiv = document.getElementById('score');
 const gameZone = document.querySelector('.gameZone');
-
-// const cardFront = document.querySelector(".card-front");
-// const cardContainer = document.querySelector(".card-container");
-// const cardBack = document.querySelector(".card-back");
-// cardContainer.addEventListener('click', flipCard);
-
 const cards = ['dog.svg', 'hippo.svg', 'spider.svg'];
 const completeCards = [...cards, ...cards];
 let score = 0;
+let numClicks = 1;
+let cardClicked;
+let secondCard;
+let attempts = 0;
 
-document.addEventListener('click', ()=>{
-    console.log('clicked');
+document.addEventListener('click', (e)=>{
+    let read = e.target.childNodes[0].childNodes[0].getAttribute('src'); 
+    if (read){
+        if (numClicks <= 1){
+            numClicks++;
+            cardClicked = read;
+        } else{
+            if(attempts < 3){
+                setTimeout(()=>{
+                    secondCard = read;
+                    numClicks = 1;
+                    secondCard == cardClicked ? (
+                        alert('match'),
+                        score++,
+                        showScore(),
+                        gameZone.childNodes.forEach(card => card.childNodes[0].classList.add('d-none'))
+                    ): (
+                        alert('sorry try Again'), 
+                        showScore(),
+                        attempts++,
+                        gameZone.childNodes.forEach(card => card.childNodes[0].classList.add('d-none')))
+                }, 0);
+            }else {
+                setTimeout(()=>{
+                    attempts = 0;
+                    score = 0;
+                    cardClicked = '';
+                    secondCard = '';
+                    showScore();
+                    numClicks = 1;
+                    alert('game over');
+                    gameZone.childNodes.forEach(card => card.childNodes[0].classList.add('d-none'));
+                },0);
+            }
+        }
+    }
 })
 
 completeCards.forEach( card =>{
@@ -34,8 +67,11 @@ completeCards.forEach( card =>{
 
 function flipCard(e){
     const card = e.target;
-    console.log(e.target);
     card.childNodes[0].classList.toggle("d-none");
     card.childNodes[1].classList.toggle("d-none");
 }
 
+const showScore = ()=>{
+    scoreDiv.innerHTML = `Score: ${score} <br> Attempts: ${attempts}`;
+
+}
