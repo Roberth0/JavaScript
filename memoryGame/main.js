@@ -11,7 +11,7 @@ let attempts = 0;
 
 document.addEventListener('click', (e)=>{
     let read = e.target.childNodes[0].childNodes[0].getAttribute('src'); 
-    if (read){
+    if (!read) return
         if (numClicks <= 1){
             numClicks++;
             cardClicked = read;
@@ -44,7 +44,6 @@ document.addEventListener('click', (e)=>{
                 },0);
             }
         }
-    }
 })
 
 completeCards.forEach( card =>{
