@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.general-container {
+    height: 1023px;
+    position: relative;
+    width: 1440px;
+    margin: 0 auto;
+    background-color: #100E1D;
+}
+.container-left-panel {
+    width:459px;
+    background-color: #1E213A;
+    height: 1023px;
+}
+.container-right-panel {
+    width: 981px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 1023px;
+    background-color: #00f;
+
+}
