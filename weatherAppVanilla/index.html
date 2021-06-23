@@ -3,15 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="style.css" media="all">
     <title>Weather App Vanilla JS</title>
 </head>
 <body>
     <div class="general-container">
-        <div class="container-left-panel"></div>
-        <div class="container-right-panel"></div>
+        <div class="container-left-panel">
+            <div class="container-search">
+                <button class="search-places">
+                    Search for Places
+                </button>
+            </div>
+            <div class="container-location">
+                <span class="material-icons">gps_fixed</span>
+            </div>
+        </div>
+        <div class="container-image">
+            <img class="bgcloud" src="Cloud-background.png" alt="cloudbg">
+            <img src="Shower.png" alt="sun-cloud">
+        </div>
+        <div class="container-temperature">
+            <p id="temperature">15°C</p>
+        </div>
+        <!-- <div class="container-right-panel"></div> -->
+        <script> 
+            const value = 0;
+        </script>
         
     </div>
     
