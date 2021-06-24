@@ -4,9 +4,14 @@
     box-sizing: border-box;
 }
 
+body{
+    background-color: #100E1D;
+    color: #fff;
+}
 .general-container {
     /* position: relative; */
     background-color: #1e213a;
+    height: 100vh;
     /* border-radius: 2%; */
 }
 
@@ -42,6 +47,7 @@
     box-shadow: 0 4px 2px rgba(0, 0, 0, 0.25);
     width: 161px;
     height: 40px;
+    border: none;
 }
 .container-location {
     width: 40px;
@@ -86,6 +92,7 @@
     justify-content: center;
     background-color: #1E213A;
     margin: 66px auto 0;
+    overflow: hidden;
 }
 
 .container-temperature {
@@ -103,4 +110,79 @@
     color: #222;
     position: absolute;
     top: -40%;
+}
+.container-temperature, .container-map{
+    color: #fff;
+    font-family: Raleway;
+    text-align: center;
+    font-weight: 500;
+}
+.container-temperature p{
+    margin: 20px auto 0;
+}
+.container-temperature:nth-child(2){
+    font-size: 36px;
+}
+.weather-desc{
+    font-size: 36px;
+}
+.weather-date{
+    font-size: 18px;
+    font-weight: 500;
+}
+.container-map {
+    margin: 34px auto 0;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.weather-date-sep{
+    margin: 0 16px;
+}
+.container-coming-days{
+    padding: 8%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.weather-card{
+    max-width: 120px;
+    min-height: 177px;
+    padding: 16px;
+    text-align: center;
+    margin: 15px auto;
+    /* margin: 0 26px; */
+    background-color: #1E213A;
+    border-radius: 5%;
+}
+.weather-card-img{
+    width: 70%;
+    margin: 10px auto;
+}
+.weather-card-img> img{
+    width:100%;
+}
+.weather-card p, .weather-card span{
+    font-size: 16px;
+    font-weight: 500;
+    font-family: Raleway;
+    line-height: 18.78px;
+
+}
+.weather-card-temp {
+    margin: 30px auto 0;
+}
+.weather-card-temp span {
+    margin: 0 5px;
+}
+.avg-temp{
+    color: #A09FB1;
+}
+.hightlights-card {
+    max-width: 328px;
+    min-height: 204px;
+    background-color: #1E213A;
 }
