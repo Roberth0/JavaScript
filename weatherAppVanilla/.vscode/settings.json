@@ -1,0 +1,4 @@
+{
+    "vim.vimrc.enable": true,
+    "editor.fontFamily": "'JetBrainsMonoMedium Nerd Font Mono', 'monospace', monospace, 'Droid Sans Fallback'"
+}
