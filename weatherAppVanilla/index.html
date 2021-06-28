@@ -11,10 +11,22 @@
     <title>Weather App Vanilla JS</title>
 </head>
 <body>
+    <div id="modal" class="searchModal d-none">
+        <span id="closeModal"class="material-icons">close</span>
+        <form>
+            <input id="placeSearch" type="text" placeholder="&#xF002; search location" style="font-family:Arial, FontAwesome">
+            <button id="searchBtn">Search</button>
+        </form>
+        <div class="cities">
+            <p class="citie">London</p>
+            <p class="citie">Barcelona</p>
+            <p class="citie">Long Beach</p>
+        </div>
+    </div>
     <div class="general-container">
         <div class="container-left-panel">
             <div class="container-search">
-                <button class="search-places">
+                <button id="searchPlacesBtn" class="search-places">
                     Search for Places
                 </button>
             </div>
@@ -121,6 +133,7 @@
     <footer>
         <p class="footerInfo">created by <strong>itami</strong> - devchallenges.io</p>
     </footer>
+    <script src="main.js"></script>
     
 </body>
 </html>

@@ -49,6 +49,9 @@ body{
     height: 40px;
     border: none;
 }
+.search-places:hover{
+    cursor: pointer;
+}
 .container-location {
     width: 40px; height: 40px;
     display: inline-flex;
@@ -251,4 +254,67 @@ footer{
 }
 strong{
     text-decoration: underline;
+}
+.searchModal{
+    height: 100vh;
+    padding: 15px;
+    background-color: #1E213A;
+    display: flex;
+    flex-direction: column;
+}
+.searchModal > span {
+    text-align: right;
+    /* padding-right: 5px; */
+    margin-bottom: 15px;
+    color: #E7E7EB;
+}
+#placeSearch{
+    padding: 5px 10px;
+    font-size: 16px;
+    width: 230px;
+    outline: none;
+    height: 48px;
+    background-color: #1E213A;
+    color: #616475;
+    border: 1px solid #E7E7EB;
+}
+/* #placeSearch:active{ */
+/*     color: #fff; */
+/* } */
+form{
+    display: flex;
+    justify-content: space-between;
+}
+#searchBtn{
+    width: 86px;
+    height: 48px;
+    color: #E7E7EB;
+    background-color: #3C47E9;
+    border: none;
+}
+
+.cities{
+    width: 100%;
+    margin: 15px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.cities p {
+    padding: 12px 5px;
+    display: block;
+    color: #E7E7EB;
+    width: 100%;
+    margin: 2px auto;
+}
+
+.cities p:hover{
+    border: 1px solid #616475;
+    cursor: pointer;
+}
+.d-none{
+    display: none;
+}
+#closeModal:hover{
+    cursor: pointer;
 }
