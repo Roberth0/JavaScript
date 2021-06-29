@@ -11,129 +11,132 @@
     <title>Weather App Vanilla JS</title>
 </head>
 <body>
-    <div id="modal" class="searchModal d-none">
-        <span id="closeModal"class="material-icons">close</span>
-        <form>
-            <input id="placeSearch" type="text" placeholder="&#xF002; search location" style="font-family:Arial, FontAwesome">
-            <button id="searchBtn">Search</button>
-        </form>
-        <div class="cities">
-            <p class="citie">London</p>
-            <p class="citie">Barcelona</p>
-            <p class="citie">Long Beach</p>
+    <div class="container-global">
+        <div id="modal" class="searchModal d-none">
+            <span id="closeModal"class="material-icons">close</span>
+            <form>
+                <input id="placeSearch" type="text" placeholder="&#xF002; search location" style="font-family:Arial, FontAwesome">
+                <button id="searchBtn">Search</button>
+            </form>
+            <div class="cities">
+                <p class="citie">London</p>
+                <p class="citie">Barcelona</p>
+                <p class="citie">Long Beach</p>
+            </div>
+        </div>
+
+        <div class="general-container">
+            <div class="container-left-panel">
+                <div class="container-search">
+                    <button id="searchPlacesBtn" class="search-places">
+                        Search for Places
+                    </button>
+                </div>
+                <div class="container-location">
+                    <span class="material-icons">gps_fixed</span>
+                </div>
+            </div>
+            <div class="container-image">
+                <img class="bgcloud" src="Cloud-background.png" alt="cloudbg">
+                <img src="Shower.png" alt="sun-cloud">
+            </div>
+            <div class="container-temperature">
+                <p id="temperature">15°C</p>
+                <p class="weather-desc">Shower</p>
+                <p class="weather-date">Today <span class="weather-date-sep">•</span>Fri, 5 Jun</p>
+            </div>
+            <div class="container-map">
+                <span class="material-icons">fmd_good</span>
+                <span>Hellsinki</span>
+            </div>
+        </div>
+
+        <div class="right-panel">
+            <section class="container-coming-days">
+                <div class="weather-card">
+                    <p>Tomorrow</p>
+                    <div class="weather-card-img"><img src="Thunderstorm.png" alt="weather icon"></div>
+                    <div class="weather-card-temp">
+                        <span>16°C</span>
+                        <span class="avg-temp">11°C</span>
+                    </div>
+                </div>
+                <div class="weather-card">
+                    <p>Tomorrow</p>
+                    <div class="weather-card-img"><img src="Thunderstorm.png" alt="weather icon"></div>
+                    <div class="weather-card-temp">
+                        <span>16°C</span>
+                        <span class="avg-temp">11°C</span>
+                    </div>
+                </div>
+                <div class="weather-card">
+                    <p>Tomorrow</p>
+                    <div class="weather-card-img"><img src="Thunderstorm.png" alt="weather icon"></div>
+                    <div class="weather-card-temp">
+                        <span>16°C</span>
+                        <span class="avg-temp">11°C</span>
+                    </div>
+                </div>
+                <div class="weather-card">
+                    <p>Tomorrow</p>
+                    <div class="weather-card-img"><img src="Thunderstorm.png" alt="weather icon"></div>
+                    <div class="weather-card-temp">
+                        <span>16°C</span>
+                        <span class="avg-temp">11°C</span>
+                    </div>
+                </div>
+                <div class="weather-card">
+                    <p>Tomorrow</p>
+                    <div class="weather-card-img"><img src="Thunderstorm.png" alt="weather icon"></div>
+                    <div class="weather-card-temp">
+                        <span>16°C</span>
+                        <span class="avg-temp">11°C</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="container-hightlights">
+                <h2 class="title">Today's hightlights</h2>
+                <div class="hightlights-card">
+                    <p>Wind Status</p>
+                    <div class="hightlights-card-temp"><span>7 mph</span></div>
+                    <div class="hightlights-card-wind">
+                        <span class="material-icons rotate">arrow_circle_down</span>
+                        <span>WSW</span>
+                    </div>
+                </div>
+                <div class="hightlights-card">
+                    <p>Humidity</p>
+                    <div class="hightlights-card-temp"><span>84%</span></div>
+                    <div class="hightlights-card-humidity">
+                        <div class="filledPercent">
+                            <span>0</span>
+                            <span>50</span>
+                            <span>100</span>
+                        </div>
+                        <div class="percentBar">
+                            <div class="fillBar"></div>
+                        </div>
+                        <div class="bottomText">
+                            <p>%</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hightlights-card visivility">
+                    <p>Visivility</p>
+                    <div class="hightlights-card-temp"><span>6,4 <span class="miles">miles</span></span></div>
+                </div>
+                <div class="hightlights-card pressure">
+                    <p>Air Pressure</p>
+                    <div class="hightlights-card-temp"><span>998 mb</span></div>
+                </div>
+            </section>
+
+            <footer>
+                <p class="footerInfo">created by <strong>itami</strong> - devchallenges.io</p>
+            </footer>
         </div>
     </div>
-    <div class="general-container">
-        <div class="container-left-panel">
-            <div class="container-search">
-                <button id="searchPlacesBtn" class="search-places">
-                    Search for Places
-                </button>
-            </div>
-            <div class="container-location">
-                <span class="material-icons">gps_fixed</span>
-            </div>
-        </div>
-        <div class="container-image">
-            <img class="bgcloud" src="Cloud-background.png" alt="cloudbg">
-            <img src="Shower.png" alt="sun-cloud">
-        </div>
-        <div class="container-temperature">
-            <p id="temperature">15°C</p>
-            <p class="weather-desc">Shower</p>
-            <p class="weather-date">Today <span class="weather-date-sep">•</span>Fri, 5 Jun</p>
-        </div>
-        <div class="container-map">
-            <span class="material-icons">fmd_good</span>
-            <span>Hellsinki</span>
-        </div>
-        <!-- <div class="container-right-panel"></div> -->
-        <script> 
-            const value = 0;
-        </script>
-    </div>
-    <section class="container-coming-days">
-        <div class="weather-card">
-            <p>Tomorrow</p>
-            <div class="weather-card-img"><img src="Thunderstorm.png" alt="weather icon"></div>
-            <div class="weather-card-temp">
-                <span>16°C</span>
-                <span class="avg-temp">11°C</span>
-            </div>
-        </div>
-        <div class="weather-card">
-            <p>Tomorrow</p>
-            <div class="weather-card-img"><img src="Thunderstorm.png" alt="weather icon"></div>
-            <div class="weather-card-temp">
-                <span>16°C</span>
-                <span class="avg-temp">11°C</span>
-            </div>
-        </div>
-        <div class="weather-card">
-            <p>Tomorrow</p>
-            <div class="weather-card-img"><img src="Thunderstorm.png" alt="weather icon"></div>
-            <div class="weather-card-temp">
-                <span>16°C</span>
-                <span class="avg-temp">11°C</span>
-            </div>
-        </div>
-        <div class="weather-card">
-            <p>Tomorrow</p>
-            <div class="weather-card-img"><img src="Thunderstorm.png" alt="weather icon"></div>
-            <div class="weather-card-temp">
-                <span>16°C</span>
-                <span class="avg-temp">11°C</span>
-            </div>
-        </div>
-        <div class="weather-card">
-            <p>Tomorrow</p>
-            <div class="weather-card-img"><img src="Thunderstorm.png" alt="weather icon"></div>
-            <div class="weather-card-temp">
-                <span>16°C</span>
-                <span class="avg-temp">11°C</span>
-            </div>
-        </div>
-    </section>
-    <section class="container-hightlights">
-        <h2 class="title">Today's hightlights</h2>
-        <div class="hightlights-card">
-            <p>Wind Status</p>
-            <div class="hightlights-card-temp"><span>7 mph</span></div>
-            <div class="hightlights-card-wind">
-                <span class="material-icons rotate">arrow_circle_down</span>
-                <span>WSW</span>
-            </div>
-        </div>
-        <div class="hightlights-card">
-            <p>Humidity</p>
-            <div class="hightlights-card-temp"><span>84%</span></div>
-            <div class="hightlights-card-humidity">
-                <div class="filledPercent">
-                    <span>0</span>
-                    <span>50</span>
-                    <span>100</span>
-                </div>
-                <div class="percentBar">
-                    <div class="fillBar"></div>
-                </div>
-                <div class="bottomText">
-                    <p>%</p>
-                </div>
-            </div>
-        </div>
-        <div class="hightlights-card">
-            <p>Visivility</p>
-            <div class="hightlights-card-temp"><span>6,4 <span class="miles">miles</span></span></div>
-        </div>
-        <div class="hightlights-card">
-            <p>Air Pressure</p>
-            <div class="hightlights-card-temp"><span>998 mb</span></div>
-        </div>
-    </section>
-    <footer>
-        <p class="footerInfo">created by <strong>itami</strong> - devchallenges.io</p>
-    </footer>
     <script src="main.js"></script>
-    
 </body>
 </html>
