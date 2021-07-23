@@ -8,6 +8,7 @@ body{
     background-color: #100E1D;
     color: #fff;
 }
+
 .general-container {
     /* position: relative; */
     background-color: #1e213a;
@@ -315,6 +316,11 @@ form{
 #closeModal:hover{
     cursor: pointer;
 }
+@media screen and (max-width: 768px){
+    .temperatureChooser{
+        display: none;
+    }
+}
 
 @media screen and (min-width: 769px){
     .container-global{
@@ -363,9 +369,23 @@ form{
         z-index: 10;
         position: absolute;
     }
+
     .temperatureChooser{
+        display: block;
         width: 87%
     }
+    .temperatureC{
+        font-family: Raleway;
+        font-size: 20px;
+        background-color: #E7E7EB;
+        color: #110E3C;
+        font-weight: 700;
+    }
+    .temperatureC:hover{
+        background-color: #a8a8a8;
+        cursor: pointer;
+    }
+
     .footerInfo{
         margin-top: 6%;
     }
