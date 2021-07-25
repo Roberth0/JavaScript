@@ -8,8 +8,27 @@ const cities = document.querySelector('.cities');
 const temperature = document.getElementById("temperature");
 const currentLocation = document.getElementById("currentLocation");
 const weatherDesc = document.querySelector('.weather-desc');
+const gps = document.getElementById("gps");
 
+// Events
+searchPlacesBtn.addEventListener('click', e => {
+    modal.classList.toggle("d-none");
+    console.log('works');
+});
 
+placeSearchBtn.addEventListener('click', e => {
+    e.preventDefault();
+    findLocation(placeSearch.value);
+    placeSearch.value = "";
+})
+
+closeModal.onclick = () => { modal.classList.toggle("d-none") };
+
+document.addEventListener('DOMContentLoaded', () => {
+    getCurrentLocation()
+        .then(res => getGpsWeather(res.latitude, res.longitude));
+})
+// Functions
 var cors_api_url = 'https://cors-anywhere.herokuapp.com/';
 function doCORSRequest(options, printResult) {
     var x = new XMLHttpRequest();
@@ -44,20 +63,7 @@ function doCORSRequest(options, printResult) {
     };
 })();
 
-searchPlacesBtn.addEventListener('click', e => {
-    modal.classList.toggle("d-none");
-    console.log('works');
-});
-
-placeSearchBtn.addEventListener('click', e => {
-    e.preventDefault();
-    findLocation(placeSearch.value);
-    placeSearch.value = "";
-})
-
-closeModal.onclick = () => { modal.classList.toggle("d-none") }
-
-function showAvailableCities(res){
+function showAvailableCities(res) {
     cities.innerHTML = "";
     res.forEach(location => {
         const citie = document.createElement("p");
@@ -67,22 +73,37 @@ function showAvailableCities(res){
         citie.addEventListener('click', (e) => {
             getCityInfo(e.target.classList[1]);
         });
-
         cities.appendChild(citie);
     });
 }
-async function findLocation(city){
-    const data = await new Promise((resolve, reject) => {doCORSRequest({method: "GET", url: `https://www.metaweather.com/api/location/search/?query=${city}`}, res => resolve(JSON.parse(res)))});
+async function findLocation(city) {
+    const data = await new Promise((resolve, reject) => { doCORSRequest({ method: "GET", url: `https://www.metaweather.com/api/location/search/?query=${city}` }, res => resolve(JSON.parse(res))) });
     showAvailableCities(data);
 }
 
-function updateGeneralContainer(){
+function updateGeneralContainer() {
     temperature.innerText = temp;
     weatherDesc.innerText = state;
     currentLocation.innerText = location;
 }
 
-async function getCityInfo(woeid){
-    const data = await new Promise((resolve, reject) => {doCORSRequest({method: "GET", url: `https://www.metaweather.com/api/location/${woeid}`}, res => resolve(JSON.parse(res)))});
+async function getCityInfo(woeid) {
+    const data = await new Promise((resolve, reject) => { doCORSRequest({ method: "GET", url: `https://www.metaweather.com/api/location/${woeid}` }, res => resolve(JSON.parse(res))) });
     console.log(data.consolidated_weather[0]);
+}
+
+async function getCurrentLocation() {
+    if (!navigator.geolocation) {
+        console.log("Update your browser");
+        return
+    }
+    const currentLocation = await new Promise( (resolve, reject) => {navigator.geolocation.getCurrentPosition(res => resolve(res.coords), null, { maximumAge: 0, enableHighAccuracy: true })});
+    const {latitude, longitude} = currentLocation;
+    return {latitude, longitude};
+}
+
+async function getGpsWeather(lat, long){
+    const data = await new Promise((resolve, reject) => { doCORSRequest({ method: "GET", url: `https://www.metaweather.com/api/location/search/?lattlong=${lat},${long}` }, res => resolve(JSON.parse(res))) });
+    console.log("weather", data);
+
 }
