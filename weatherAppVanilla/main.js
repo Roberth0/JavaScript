@@ -9,6 +9,8 @@ const temperature = document.getElementById("temperature");
 const currentLocation = document.getElementById("currentLocation");
 const weatherDesc = document.querySelector('.weather-desc');
 const gps = document.getElementById("gps");
+const temperatureC = document.querySelector('.temperatureC');
+const temperatureF = document.querySelector('.temperatureF');
 
 // Events
 searchPlacesBtn.addEventListener('click', e => {
@@ -26,8 +28,29 @@ closeModal.onclick = () => { modal.classList.toggle("d-none") };
 
 document.addEventListener('DOMContentLoaded', () => {
     getCurrentLocation()
-        .then(res => getGpsWeather(res.latitude, res.longitude));
+        .then(res => getGpsWeather(res.latitude, res.longitude))
+        .then(cityInfo => getCityInfo(cityInfo.woeid))
+        .then(res => console.log(res));
+    const tempFar = cenToFar(28);
+    console.log(tempFar);
+});
+
+temperatureF.addEventListener('click',() => { 
+    let tempValues = document.querySelectorAll(".tempValue");
+    tempValues = Array.from(tempValues);
+    tempValues.map(tempValue => {
+        tempValue.textContent = `${cenToFar(tempValue.textContent.slice(0, 2))}°F`;
+    });
 })
+
+
+
+
+
+
+
+
+
 // Functions
 var cors_api_url = 'https://cors-anywhere.herokuapp.com/';
 function doCORSRequest(options, printResult) {
@@ -90,6 +113,7 @@ function updateGeneralContainer() {
 async function getCityInfo(woeid) {
     const data = await new Promise((resolve, reject) => { doCORSRequest({ method: "GET", url: `https://www.metaweather.com/api/location/${woeid}` }, res => resolve(JSON.parse(res))) });
     console.log(data.consolidated_weather[0]);
+    return {min_temp, max_temp, the_temp,air_pressure, wind_speed, wind_direction, humidity, visibility} = data.consolidated_weather[0];
 }
 
 async function getCurrentLocation() {
@@ -103,7 +127,11 @@ async function getCurrentLocation() {
 }
 
 async function getGpsWeather(lat, long){
-    const data = await new Promise((resolve, reject) => { doCORSRequest({ method: "GET", url: `https://www.metaweather.com/api/location/search/?lattlong=${lat},${long}` }, res => resolve(JSON.parse(res))) });
-    console.log("weather", data);
+    const data = await new Promise((resolve, reject) => { doCORSRequest({ method: "GET", url: `https://www.metaweather.com/api/location/search/?lattlong=0.34,-78.12` }, res => resolve(JSON.parse(res))) });
+    console.log("weather", data[0]);
+    return {title: data[0].title, woeid: data[0].woeid} 
 
+}
+function cenToFar(temp){
+    return Math.round((temp * 9/5) + 32);
 }
