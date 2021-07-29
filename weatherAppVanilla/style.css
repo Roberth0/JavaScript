@@ -271,10 +271,11 @@ strong{
     background-color: #1E213A;
     color: #616475;
     border: 1px solid #E7E7EB;
+    
 }
-/* #placeSearch:active{ */
-/*     color: #fff; */
-/* } */
+#placeSearch:enabled{
+    color: #fff;
+}
 form{
     display: flex;
     justify-content: space-between;
@@ -374,18 +375,6 @@ form{
         display: block;
         width: 87%
     }
-    .temperatureC{
-        font-family: Raleway;
-        font-size: 20px;
-        background-color: rgba(150, 152, 152, 0.3);
-        color: #110E3C;
-        font-weight: 700;
-    }
-    .temperatureC:hover{
-        background-color: #a8a8a8;
-        cursor: pointer;
-    }
-
     .footerInfo{
         margin-top: 6%;
     }

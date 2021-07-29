@@ -21,7 +21,7 @@ const airPressure = document.getElementById("air-pressure");
 // Events
 searchPlacesBtn.addEventListener('click', e => {
     modal.classList.toggle("d-none");
-    console.log('works');
+    // console.log('works');
 });
 
 placeSearchBtn.addEventListener('click', e => {
@@ -37,21 +37,30 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(res => getGpsWeather(res.latitude, res.longitude))
         .then(cityInfo => getCityInfo(cityInfo.woeid, cityInfo.title))
         .then(res => {
-            console.log(res);
+            // console.log(res);
             updateGeneralContainer(res)
         });
 });
 
 temperatureF.addEventListener('click',() => { 
-    if(temperatureF.classList.contains("selected")){
-        return
-    }
+    if(temperatureF.classList.contains("selected")) return;
     temperatureC.classList.toggle("selected");
     temperatureF.classList.toggle('selected');
     let tempValues = document.querySelectorAll(".tempValue");
     tempValues = Array.from(tempValues);
     tempValues.map(tempValue => {
         tempValue.textContent = `${cenToFar(tempValue.textContent.slice(0, 2))}°F`;
+    });
+})
+
+temperatureC.addEventListener('click',() => { 
+    if(temperatureC.classList.contains("selected")) return;
+    temperatureC.classList.toggle("selected");
+    temperatureF.classList.toggle('selected');
+    let tempValues = document.querySelectorAll(".tempValue");
+    tempValues = Array.from(tempValues);
+    tempValues.map(tempValue => {
+        tempValue.textContent = `${farToCen(tempValue.textContent.slice(0, 2))}°C`;
     });
 })
 
@@ -99,6 +108,10 @@ function doCORSRequest(options, printResult) {
 })();
 
 function showAvailableCities(res) {
+    if(!res.length){
+        cities.innerHTML = "No matches found please try again.";
+        return
+    }
     cities.innerHTML = "";
     res.forEach(location => {
         const citie = document.createElement("p");
@@ -106,7 +119,9 @@ function showAvailableCities(res) {
         citie.classList.add(location.woeid);
         citie.innerText = location.title;
         citie.addEventListener('click', (e) => {
-            getCityInfo(e.target.classList[1]);
+            getCityInfo(e.target.classList[1], e.target.textContent)
+            .then(data => updateGeneralContainer(data));
+            modal.classList.toggle("d-none");
         });
         cities.appendChild(citie);
     });
@@ -147,10 +162,13 @@ async function getCurrentLocation() {
 
 async function getGpsWeather(lat, long){
     const data = await new Promise((resolve, reject) => { doCORSRequest({ method: "GET", url: `https://www.metaweather.com/api/location/search/?lattlong=${lat},${long}` }, res => resolve(JSON.parse(res))) });
-    console.log("weather", data[0]);
+    // console.log("weather", data[0]);
     return {title: data[0].title, woeid: data[0].woeid} 
 
 }
 function cenToFar(temp){
     return Math.round((temp * 9/5) + 32);
+}
+function farToCen(temp){
+    return Math.round((temp - 32) * 5/9);
 }
