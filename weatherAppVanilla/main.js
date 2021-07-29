@@ -12,6 +12,12 @@ const gps = document.getElementById("gps");
 const temperatureC = document.querySelector('.temperatureC');
 const temperatureF = document.querySelector('.temperatureF');
 
+const windSpeed = document.getElementById("wind-speed");
+const windDirectionCompass = document.getElementById("wind-direction-compass");
+const humidity = document.getElementById("humidity");
+const visibility = document.getElementById("visibility");
+const airPressure = document.getElementById("air-pressure");
+
 // Events
 searchPlacesBtn.addEventListener('click', e => {
     modal.classList.toggle("d-none");
@@ -29,13 +35,19 @@ closeModal.onclick = () => { modal.classList.toggle("d-none") };
 document.addEventListener('DOMContentLoaded', () => {
     getCurrentLocation()
         .then(res => getGpsWeather(res.latitude, res.longitude))
-        .then(cityInfo => getCityInfo(cityInfo.woeid))
-        .then(res => console.log(res));
-    const tempFar = cenToFar(28);
-    console.log(tempFar);
+        .then(cityInfo => getCityInfo(cityInfo.woeid, cityInfo.title))
+        .then(res => {
+            console.log(res);
+            updateGeneralContainer(res)
+        });
 });
 
 temperatureF.addEventListener('click',() => { 
+    if(temperatureF.classList.contains("selected")){
+        return
+    }
+    temperatureC.classList.toggle("selected");
+    temperatureF.classList.toggle('selected');
     let tempValues = document.querySelectorAll(".tempValue");
     tempValues = Array.from(tempValues);
     tempValues.map(tempValue => {
@@ -104,16 +116,23 @@ async function findLocation(city) {
     showAvailableCities(data);
 }
 
-function updateGeneralContainer() {
-    temperature.innerText = temp;
-    weatherDesc.innerText = state;
-    currentLocation.innerText = location;
+function updateGeneralContainer(data) {
+    temperature.innerText = Math.round(data.the_temp) + "°C";
+    weatherDesc.innerText = data.weather_state_name;
+    currentLocation.innerText = data.name;
+    windSpeed.innerText = Math.round(data.wind_speed);
+    windDirectionCompass.innerText = data.wind_direction_compass;
+    humidity.innerText = Math.round(data.humidity);
+    document.querySelector(".fillBar").style.width = `${data.humidity}%`;
+    visibility.innerText = Math.round((data.visibility + Number.EPSILON) * 100) / 100;
+    airPressure.innerText = data.air_pressure;
 }
 
-async function getCityInfo(woeid) {
+async function getCityInfo(woeid, title) {
     const data = await new Promise((resolve, reject) => { doCORSRequest({ method: "GET", url: `https://www.metaweather.com/api/location/${woeid}` }, res => resolve(JSON.parse(res))) });
-    console.log(data.consolidated_weather[0]);
-    return {min_temp, max_temp, the_temp,air_pressure, wind_speed, wind_direction, humidity, visibility} = data.consolidated_weather[0];
+    const info = data.consolidated_weather[0];
+    const name = title
+    return {...info, name};
 }
 
 async function getCurrentLocation() {
@@ -127,7 +146,7 @@ async function getCurrentLocation() {
 }
 
 async function getGpsWeather(lat, long){
-    const data = await new Promise((resolve, reject) => { doCORSRequest({ method: "GET", url: `https://www.metaweather.com/api/location/search/?lattlong=0.34,-78.12` }, res => resolve(JSON.parse(res))) });
+    const data = await new Promise((resolve, reject) => { doCORSRequest({ method: "GET", url: `https://www.metaweather.com/api/location/search/?lattlong=${lat},${long}` }, res => resolve(JSON.parse(res))) });
     console.log("weather", data[0]);
     return {title: data[0].title, woeid: data[0].woeid} 
 

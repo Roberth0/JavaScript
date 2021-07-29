@@ -377,7 +377,7 @@ form{
     .temperatureC{
         font-family: Raleway;
         font-size: 20px;
-        background-color: #E7E7EB;
+        background-color: rgba(150, 152, 152, 0.3);
         color: #110E3C;
         font-weight: 700;
     }
@@ -389,4 +389,8 @@ form{
     .footerInfo{
         margin-top: 6%;
     }
+}
+.selected{
+    background-color: #E7E7EB;
+    color: #110E3C;
 }

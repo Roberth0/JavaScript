@@ -53,7 +53,7 @@
 
         <div class="right-panel">
             <div class="temperatureChooser">
-                <div class="temperatureC">
+                <div class="temperatureC selected">
                     <span>°C</span>
                 </div>
                 <div class="temperatureF">
@@ -110,15 +110,15 @@
                 </div>
                 <div class="hightlights-card">
                     <p>Wind Status</p>
-                    <div class="hightlights-card-temp"><span>7 mph</span></div>
+                    <div class="hightlights-card-temp"><span><span id="wind-speed">7</span> mph</span></div>
                     <div class="hightlights-card-wind">
                         <span class="material-icons rotate">arrow_circle_down</span>
-                        <span>WSW</span>
+                        <span id="wind-direction-compass">WSW</span>
                     </div>
                 </div>
                 <div class="hightlights-card">
                     <p>Humidity</p>
-                    <div class="hightlights-card-temp"><span>84%</span></div>
+                    <div class="hightlights-card-temp"><span id="humidity">84</span><span>%</span></div>
                     <div class="hightlights-card-humidity">
                         <div class="filledPercent">
                             <span>0</span>
@@ -135,11 +135,11 @@
                 </div>
                 <div class="hightlights-card visivility">
                     <p>Visivility</p>
-                    <div class="hightlights-card-temp"><span>6,4 <span class="miles">miles</span></span></div>
+                    <div class="hightlights-card-temp"><span id="visibility">6,4</span><span class="miles"> miles</span></div>
                 </div>
                 <div class="hightlights-card pressure">
                     <p>Air Pressure</p>
-                    <div class="hightlights-card-temp"><span>998 mb</span></div>
+                    <div class="hightlights-card-temp"><span id="air-pressure">998</span><span> mb</span></div>
                 </div>
             </section>
 
