@@ -11,6 +11,7 @@ const weatherDesc = document.querySelector('.weather-desc');
 const gps = document.getElementById("gps");
 const temperatureC = document.querySelector('.temperatureC');
 const temperatureF = document.querySelector('.temperatureF');
+const containerForecast = document.querySelector(".container-coming-days");
 
 const windSpeed = document.getElementById("wind-speed");
 const windDirectionCompass = document.getElementById("wind-direction-compass");
@@ -39,7 +40,6 @@ gps.onclick = () => {
         .then(res => getGpsWeather(res.latitude, res.longitude))
         .then(cityInfo => getCityInfo(cityInfo.woeid, cityInfo.title))
         .then(res => {
-            // console.log(res);
             updateGeneralContainer(res)
         });
 }
@@ -49,8 +49,9 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(res => getGpsWeather(res.latitude, res.longitude))
         .then(cityInfo => getCityInfo(cityInfo.woeid, cityInfo.title))
         .then(res => {
-            // console.log(res);
-            updateGeneralContainer(res)
+            updateGeneralContainer({...res.consolidated_weather[0], name: res.title});
+            res.consolidated_weather.shift();
+            updateForecast(res.consolidated_weather);
         });
 });
 
@@ -61,7 +62,7 @@ temperatureF.addEventListener('click',() => {
     let tempValues = document.querySelectorAll(".tempValue");
     tempValues = Array.from(tempValues);
     tempValues.map(tempValue => {
-        tempValue.textContent = `${cenToFar(tempValue.textContent.slice(0, 2))}°F`;
+        tempValue.textContent = `${cenToFar(tempValue.textContent.slice(0, tempValue.textContent.indexOf("°")))}°F`;
     });
 })
 
@@ -72,7 +73,7 @@ temperatureC.addEventListener('click',() => {
     let tempValues = document.querySelectorAll(".tempValue");
     tempValues = Array.from(tempValues);
     tempValues.map(tempValue => {
-        tempValue.textContent = `${farToCen(tempValue.textContent.slice(0, 2))}°C`;
+        tempValue.textContent = `${farToCen(tempValue.textContent.slice(0, tempValue.textContent.indexOf("°")))}°C`;
     });
 })
 
@@ -152,12 +153,26 @@ function updateGeneralContainer(data) {
     date.innerText = `${currentDate.toGMTString().slice(0,11)}`;
     imgGeneral.setAttribute("src",`https://www.metaweather.com/static/img/weather/${data.weather_state_abbr}.svg`);
 }
+function updateForecast(data){
+    containerForecast.innerHTML = "";
+    data.forEach(day => {
+        containerForecast.innerHTML += `
+            <div class="weather-card">
+                <p>${day.applicable_date}</p>
+                <div class="weather-card-img"><img src="https://www.metaweather.com/static/img/weather/${day.weather_state_abbr}.svg" alt="weather icon"></div>
+                <div class="weather-card-temp">
+                    <span class="tempValue">${Math.round(day.max_temp)}°C</span>
+                    <span class="avg-temp tempValue">${Math.round(day.min_temp)}°C</span>
+                </div>
+            </div>
+        `
+        console.log(day.applicable_date, day.weather_state_abbr, day.max_temp, day.min_temp);
+    });
+}
 
 async function getCityInfo(woeid, title) {
     const data = await new Promise((resolve, reject) => { doCORSRequest({ method: "GET", url: `https://www.metaweather.com/api/location/${woeid}` }, res => resolve(JSON.parse(res))) });
-    const info = data.consolidated_weather[0];
-    const name = title
-    return {...info, name};
+    return data;
 }
 
 async function getCurrentLocation() {
