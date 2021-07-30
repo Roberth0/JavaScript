@@ -159,6 +159,12 @@ body{
 .weather-card-img> img{
     width:100%;
 }
+.container-image-general{
+    width: 232px;
+}
+.container-image-general > img {
+    width: 100%;
+}
 .weather-card p, .weather-card span{
     font-size: 16px;
     font-weight: 500;
@@ -205,6 +211,7 @@ body{
 }
 .rotate {
     transform: rotate(30deg);
+    margin: 0 2px;
 }
 .miles {
     font-size: 36px;

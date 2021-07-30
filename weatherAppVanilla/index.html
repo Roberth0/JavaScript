@@ -38,12 +38,14 @@
             </div>
             <div class="container-image">
                 <img class="bgcloud" src="Cloud-background.png" alt="cloudbg">
-                <img src="Shower.png" alt="sun-cloud">
+                <div class="container-image-general">
+                    <img id="img-general" src="Shower.png" alt="sun-cloud">
+                </div>
             </div>
             <div class="container-temperature">
                 <p id="temperature" class="tempValue">15°C</p>
                 <p class="weather-desc">Shower</p>
-                <p class="weather-date">Today <span class="weather-date-sep">•</span>Fri, 5 Jun</p>
+                <p class="weather-date">Today <span class="weather-date-sep">•</span><span id="date">Fri, 5 Jun</span></p>
             </div>
             <div class="container-map">
                 <span class="material-icons">fmd_good</span>
@@ -113,7 +115,7 @@
                     <div class="hightlights-card-temp"><span><span id="wind-speed">7</span> mph</span></div>
                     <div class="hightlights-card-wind">
                         <span class="material-icons rotate">arrow_circle_down</span>
-                        <span id="wind-direction-compass">WSW</span>
+                        <span id="wind-direction-compass"> WSW</span>
                     </div>
                 </div>
                 <div class="hightlights-card">
