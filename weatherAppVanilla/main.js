@@ -40,7 +40,9 @@ gps.onclick = () => {
         .then(res => getGpsWeather(res.latitude, res.longitude))
         .then(cityInfo => getCityInfo(cityInfo.woeid, cityInfo.title))
         .then(res => {
-            updateGeneralContainer(res)
+            updateGeneralContainer({...res.consolidated_weather[0], name: res.title});
+            res.consolidated_weather.shift();
+            updateForecast(res.consolidated_weather);
         });
 }
 
@@ -127,7 +129,12 @@ function showAvailableCities(res) {
         citie.innerText = location.title;
         citie.addEventListener('click', (e) => {
             getCityInfo(e.target.classList[1], e.target.textContent)
-            .then(data => updateGeneralContainer(data));
+            .then(data => {
+                let infoVector = data.consolidated_weather;
+                updateGeneralContainer({...infoVector[0], name: data.title});
+                infoVector.shift();
+                updateForecast(infoVector);
+            });
             modal.classList.toggle("d-none");
         });
         cities.appendChild(citie);
@@ -156,9 +163,10 @@ function updateGeneralContainer(data) {
 function updateForecast(data){
     containerForecast.innerHTML = "";
     data.forEach(day => {
+        let date = new Date(day.applicable_date);
         containerForecast.innerHTML += `
             <div class="weather-card">
-                <p>${day.applicable_date}</p>
+                <p>${date.toGMTString().slice(0, 11)}</p>
                 <div class="weather-card-img"><img src="https://www.metaweather.com/static/img/weather/${day.weather_state_abbr}.svg" alt="weather icon"></div>
                 <div class="weather-card-temp">
                     <span class="tempValue">${Math.round(day.max_temp)}°C</span>
@@ -166,7 +174,6 @@ function updateForecast(data){
                 </div>
             </div>
         `
-        console.log(day.applicable_date, day.weather_state_abbr, day.max_temp, day.min_temp);
     });
 }
 
@@ -186,7 +193,7 @@ async function getCurrentLocation() {
 }
 
 async function getGpsWeather(lat, long){
-    const data = await new Promise((resolve, reject) => { doCORSRequest({ method: "GET", url: `https://www.metaweather.com/api/location/search/?lattlong=${lat},${long}` }, res => resolve(JSON.parse(res))) });
+    const data = await new Promise((resolve, reject) => { doCORSRequest({ method: "GET", url: `https://www.metaweather.com/api/location/search/?lattlong=${lat},${long}` }, res => resolve(JSON.parse(res)))});
     // console.log("weather", data[0]);
     return {title: data[0].title, woeid: data[0].woeid} 
 

@@ -103,6 +103,7 @@ body{
     opacity: 5%;
     position: absolute;
     top: -40%;
+    margin: 10px 0 0;
 }
 .container-hightlights, .container-temperature, .container-map{
     color: #fff;
@@ -366,7 +367,7 @@ form{
         margin: 15px;
     }
     #temperature, .weather-desc, .weather-date, .container-map{
-        margin: 15% auto;
+        margin: 12% auto;
     }
     
     .visivility, .pressure{
