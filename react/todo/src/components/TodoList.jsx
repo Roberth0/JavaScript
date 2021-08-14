@@ -1,13 +1,11 @@
 import React, { Fragment } from 'react';
+import { TodoItem } from './TodoItem';
 
-export function TodoList( { todos } ) {
+export function TodoList( { todos, toggleTodo } ) {
     return (
         <ul>
             {todos.map((todo)=> (
-                <Fragment>
-                    <li>{todo}</li>
-                    <li> hi</li>
-                </Fragment>
+                <TodoItem key={todo.id} todo={todo} toggleTodo={toggleTodo}/>
             ))}
         </ul>
     )
