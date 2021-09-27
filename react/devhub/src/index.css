@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+}
+
+body {
+    background-color: #02091D;
+}
+
+.container-navbar {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.navbar {
+    display: flex;
+    margin: 2rem;
+    align-items: center;
+    justify-content: space-evenly;
+    list-style: none;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.navbar > li {
+    margin: 0 1rem;
+}
+
+.hex-one {
+    position: absolute;
+    right: 13%;
+    top: 0%;
+}
+
+.hex-two {
+    position: absolute;
+    bottom: 2%;
+    right: 2%;
+}
+
+.hex-three {
+    position: absolute;
+    left: -10%;
+    top: 18%;
+}
+
+.hex-four {
+    position: absolute;
+    left: -5%;
+    top: 42%;
+    z-index: 20;
+}
+h1 {
+    text-align: center;
+    margin: 6rem;
+}
+
+.title {
+    font-size: 72px;
+    font-weight: 800;
+    background-image: linear-gradient(to right, #9523bd, #1ce5d1);
+    background-size: 100%;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+}
+
+.student {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.student img {
+    width: 140%;
+}
+
+.contact {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: right;
+    margin: 0 15% 0 0;
+}
+.contact > p {
+    margin-left: 60%;
+    text-align: left;
+    line-height: 40.28px;
+}
+
+.contact-btn {
+    border: none;
+    padding: 8px 25px;
+    font-size: 18px;
+    font-weight: 800;
+    color: #000;
+    background-color: #40C9BB
+}
+.contact-btn::hover {
+    cursor: pointer;
+}
+
+.contact span {
+    color: #9523BD;
+}
+
+.contact i {
+    color: #2C9B90;
+}
