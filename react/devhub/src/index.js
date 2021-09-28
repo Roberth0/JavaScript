@@ -5,9 +5,7 @@ import './index.css';
 import logo from './img/logo.svg';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App logo={logo}/>
-  </React.StrictMode>,
+    <App logo={logo}/>,
   document.getElementById('root')
 );
 

@@ -33,30 +33,40 @@ body {
     margin: 0 1rem;
 }
 
-.hex-one {
+.navbar > li:hover {
+    color: #9523bd;
+    cursor: pointer;
+}
+
+.hex-one > img {
     position: absolute;
+    z-index: 1;
     right: 13%;
     top: 0%;
+    pointer-events: none;
 }
 
 .hex-two {
     position: absolute;
+    z-index: -1;
     bottom: 2%;
     right: 2%;
 }
 
 .hex-three {
     position: absolute;
+    z-index: 1;
     left: -10%;
     top: 18%;
 }
 
 .hex-four {
     position: absolute;
+    z-index: 1;
     left: -5%;
     top: 42%;
-    z-index: 20;
 }
+
 h1 {
     text-align: center;
     margin: 6rem;
@@ -88,6 +98,7 @@ h1 {
     font-weight: bold;
     text-align: right;
     margin: 0 15% 0 0;
+    z-index: 200;
 }
 .contact > p {
     margin-left: 60%;
@@ -99,11 +110,12 @@ h1 {
     border: none;
     padding: 8px 25px;
     font-size: 18px;
+    z-index: 100!important;
     font-weight: 800;
     color: #000;
     background-color: #40C9BB
 }
-.contact-btn::hover {
+.contact-btn:hover {
     cursor: pointer;
 }
 
