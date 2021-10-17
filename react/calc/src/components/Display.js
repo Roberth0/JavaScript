@@ -1,9 +1,10 @@
 import './../App.css';
 
-function Display() {
+function Display({ currentInfo }) {
+
     return (
         <div className="display-element">
-            18+28-15
+            {currentInfo}
         </div>
     );
 }
